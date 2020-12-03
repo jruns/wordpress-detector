@@ -1,0 +1,20 @@
+{
+  "name": "Wordpress Detector",
+  "version": "1.0",
+  "description": "Wordpress Detector will let you know instantly if a site is made with Wordpress!",
+  "permissions": ["activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icon_16.png",
+    "32": "icon_32.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "icon_off_16.png"
+  }
+}
