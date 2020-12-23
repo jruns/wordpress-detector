@@ -1,12 +1,19 @@
 {
-  "name": "Wordpress Detector",
+  "name": "WordPress Detector",
+  "author": "bensaine",
   "version": "1.0",
-  "description": "Wordpress Detector will let you know instantly if a site is made with Wordpress!",
-  "permissions": ["activeTab"],
+  "description": "WordPress Detector will detect instantly if the site in your current tab is made using WordPress!",
+  "permissions": ["activeTab", "tabs", "<all_urls>"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "icons": {
     "16": "icon_16.png",
     "32": "icon_32.png",
@@ -15,6 +22,7 @@
   },
   "manifest_version": 2,
   "browser_action": {
-    "default_icon": "icon_off_16.png"
+    "default_icon": "icon_off_32.png",
+    "default_title": "WordPress Detector"
   }
 }
