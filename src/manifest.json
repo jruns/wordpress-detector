@@ -3,7 +3,7 @@
   "author": "bensaine",
   "version": "1.0",
   "description": "WordPress Detector will detect instantly if the site in your current tab is made using WordPress!",
-  "permissions": ["activeTab", "tabs", "<all_urls>"],
+  "permissions": ["activeTab"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
