@@ -1,2 +1,2 @@
 # wordpress-detector
-A simple chrome extension that lets you if you're current tab is a WordPress site.
+A simple chrome extension that lets you know if you're current tab is a WordPress site.
