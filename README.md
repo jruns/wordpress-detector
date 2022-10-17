@@ -5,4 +5,4 @@ A simple chrome extension notifying of a WordPress site in your current tab.
 [View](https://chrome.google.com/webstore/detail/wordpress-detector/mllfefhpnfcegnbepchcijjijhageknh) the extension on the Chrome Web Store.
 
 ## Firefox Addons Link
-[View](https://addons.mozilla.org/en-US/firefox/addon/wordpress-detector/)
+[View](https://addons.mozilla.org/en-US/firefox/addon/wordpress-detector/) the extension on the Firefox Browser Add-Ons.
