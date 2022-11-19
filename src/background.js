@@ -1,94 +1,38 @@
 'use strict';
 
-// terms we will search <head> for to confirm WordPress
+// terms we will search in <head> to detect WordPress
 const clues = ["wp-content", "wp-includes"]
 
 // reset icon
-chrome.browserAction.setIcon({path: "icon_off_32.png"});
+updateIcon(false)
 
-function iconOn() {
-  chrome.browserAction.setIcon({path: "icon_on_32.png"});
+// updates the icon in the toolbar
+const updateIcon = (state) => {
+  const path = state ? "icon_on_32.png" : "icon_off_32.png";
+  chrome.browserAction.setIcon({ path })
 }
 
-function iconOff() {
-  chrome.browserAction.setIcon({path: "icon_off_32.png"});
+// detect wordpress in a pages <head>
+const detectWordPress = (head) => {
+  updateIcon(head && head != null && head !== "" && clues.some(v => head.includes(v)))
 }
 
-function changeIconState(state) {
-  if (state == true) {
-    iconOn();
-  } else if (state == false) {
-    iconOff();
-  }
-}
+const onTabUpdate = () => {
+  // reset
+  updateIcon(false)
 
-function detectWordPress(head) {
-  console.log(head)
-  if(!head || head == null || head === "") {
-    return;
-  }
-  let matched = clues.some(v => head.includes(v))
-  changeIconState(matched);
-}
-
-function requestHeadFromDOM() {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      return response;
+  // get current tab's <head> and detect WordPress
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { text: "send_head_inner" }, function (response) {
+      detectWordPress(response)
     });
   });
 }
 
-chrome.tabs.onActivated.addListener(function () {
-  iconOff();
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      detectWordPress(response);
-    });
-  });
-});
-
-chrome.tabs.onUpdated.addListener(function () {
-  iconOff();
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      detectWordPress(response);
-    });
-  });
-});
-
-chrome.tabs.onCreated.addListener(function () {
-  iconOff();
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      detectWordPress(response);
-    });
-  });
-});
-
-chrome.windows.onFocusChanged.addListener(function () {
-  iconOff();
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      detectWordPress(response);
-    });
-  });
-});
-
-chrome.tabs.onRemoved.addListener(function () {
-  iconOff();
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      detectWordPress(response);
-    });
-  });
-});
-
-chrome.tabs.onReplaced.addListener(function () {
-  iconOff();
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {text: "send_head_inner"}, function(response) {
-      detectWordPress(response);
-    });
-  });
-});
+// listen for tab updates
+chrome.tabs.onActivated.addListener(onTabUpdate)
+chrome.tabs.onUpdated.addListener(onTabUpdate)
+chrome.tabs.onCreated.addListener(onTabUpdate)
+chrome.windows.onFocusChanged.addListener(onTabUpdate)
+chrome.tabs.onRemoved.addListener(onTabUpdate)
+chrome.tabs.onReplaced.addListener(onTabUpdate)
