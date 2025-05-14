@@ -3,9 +3,6 @@
 // terms we will search in <head> to detect WordPress
 const clues = ["wp-content", "wp-includes"]
 
-// reset icon
-updateIcon(false)
-
 // updates the icon in the toolbar
 const updateIcon = (state) => {
   const path = state ? "icons/icon_on_32.png" : "icons/icon_off_32.png";
