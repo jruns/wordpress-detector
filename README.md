@@ -1,11 +1,11 @@
 # wordpress-detector
 A simple browser extension notifying of a WordPress site in your current tab.
 
-## Location installation instructions
-1. Download a release zip file
+## Installation instructions
+1. Download a release xpi file from this github repo
 2. Go to about:addons
 3. Click the gear icon next to the "Manage Your Extensions" heading
-4. Select "Install Add-on From File..." and select the release file
+4. Select "Install Add-on From File..." and select the release file you downloaded
 5. Pin the extension to the Toolbar
 
 ## ToDo
