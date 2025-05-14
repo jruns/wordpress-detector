@@ -5,4 +5,4 @@ A simple browser extension notifying of a WordPress site in your current tab.
 Coming soon
 
 ## Credits
-Forked from [https://github.com/bensaine/wordpress-detector]([https://addons.mozilla.org/en-US/firefox/addon/wordpress-detector/](https://github.com/bensaine/wordpress-detector)
+Forked from https://github.com/bensaine/wordpress-detector
