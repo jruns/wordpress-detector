@@ -1,8 +1,8 @@
 # wordpress-detector
-A simple chrome extension notifying of a WordPress site in your current tab.
+A simple browser extension notifying of a WordPress site in your current tab.
 
-## Chrome Web Store Link
-[View](https://chrome.google.com/webstore/detail/wordpress-detector/mllfefhpnfcegnbepchcijjijhageknh) the extension on the Chrome Web Store.
+## Location installation instructions
+Coming soon
 
-## Firefox Addons Link
-[View](https://addons.mozilla.org/en-US/firefox/addon/wordpress-detector/) the extension on the Firefox Browser Add-Ons.
+## Credits
+Forked from [https://github.com/bensaine/wordpress-detector]([https://addons.mozilla.org/en-US/firefox/addon/wordpress-detector/](https://github.com/bensaine/wordpress-detector)
