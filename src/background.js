@@ -14,7 +14,6 @@ const updateIcon = (state) => {
 // detect wordpress in a pages <head>
 const detectWordPress = (head) => {
   if ( typeof head !== "undefined" ) {
-    //console.log( head );
     updateIcon(head && head != null && head !== "" && clues.head.some(v => head.includes(v)))
   }
 }
@@ -25,7 +24,6 @@ const onTabUpdate = () => {
   // get current tab's <head> and detect WordPress
   chrome.tabs.query({ active: true, currentWindow: true, url: '*://*/*' }, function (tabs) {
     if ( tabs.length !== 0 ) {
-      //console.log(tabs[0].url)
       chrome.tabs.sendMessage(tabs[0].id, { text: "send_head_inner" }, function (response) {
         detectWordPress(response)
       });
