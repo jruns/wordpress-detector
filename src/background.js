@@ -1,7 +1,9 @@
 'use strict';
 
 // terms we will search in <head> to detect WordPress
-const clues = ["wp-content", "wp-includes", "xmlrpc.php"]
+const clues = {
+  head: [ "wp-content", "wp-includes", "xmlrpc.php" ]
+}
 
 // updates the icon in the toolbar
 const updateIcon = (state) => {
@@ -11,7 +13,7 @@ const updateIcon = (state) => {
 
 // detect wordpress in a pages <head>
 const detectWordPress = (head) => {
-  updateIcon(head && head != null && head !== "" && clues.some(v => head.includes(v)))
+  updateIcon(head && head != null && head !== "" && clues.head.some(v => head.includes(v)))
 }
 
 const onTabUpdate = () => {
