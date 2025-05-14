@@ -20,7 +20,7 @@ const detectWordPress = (head) => {
 
 const onTabUpdate = () => {
   // reset
-  updateIcon(false);
+  updateIcon(false)
 
   // get current tab's <head> and detect WordPress
   chrome.tabs.query({ active: true, currentWindow: true, url: '*://*/*' }, function (tabs) {
