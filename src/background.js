@@ -19,6 +19,7 @@ const detectWordPress = (head) => {
 }
 
 const onTabUpdate = () => {
+  // reset
   updateIcon(false);
 
   // get current tab's <head> and detect WordPress
