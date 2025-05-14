@@ -1,7 +1,7 @@
 'use strict';
 
 // terms we will search in <head> to detect WordPress
-const clues = ["wp-content", "wp-includes"]
+const clues = ["wp-content", "wp-includes", "xmlrpc.php"]
 
 // updates the icon in the toolbar
 const updateIcon = (state) => {
