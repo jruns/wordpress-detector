@@ -6,6 +6,3 @@ A simple chrome extension notifying of a WordPress site in your current tab.
 
 ## Firefox Addons Link
 [View](https://addons.mozilla.org/en-US/firefox/addon/wordpress-detector/) the extension on the Firefox Browser Add-Ons.
-
-## ToDo
-1. Correctly set the toolbar icon when multiple windows are open and focus switches between them.

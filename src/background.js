@@ -4,27 +4,29 @@
 const clues = ["wp-content", "wp-includes", "xmlrpc.php"]
 
 // updates the icon in the toolbar
-const updateIcon = (state) => {
+const updateIcon = (state, tabId = null) => {
   const path = state ? "icon_on_32.png" : "icon_off_32.png";
-  chrome.browserAction.setIcon({ path })
+  chrome.browserAction.setIcon({ path, tabId })
 }
 
 // detect wordpress in a pages <head>
-const detectWordPress = (head) => {
+const detectWordPress = (head, tabId) => {
   if ( typeof head !== "undefined" ) {
-    updateIcon(head && head != null && head !== "" && clues.some(v => head.includes(v)))
+    const state = head && head != null && head !== "" && clues.some(v => head.includes(v))
+    updateIcon( state, tabId )
   }
 }
 
-const onTabUpdate = () => {
+const onTabUpdate = (activeInfo) => {
   // reset
-  updateIcon(false)
+  updateIcon(false, activeInfo.tabId)
 
   // get current tab's <head> and detect WordPress
-  chrome.tabs.query({ active: true, currentWindow: true, url: '*://*/*' }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true, url: ['about:newtab', '*://*/*'] }, function (tabs) {
     if ( tabs.length !== 0 ) {
-      chrome.tabs.sendMessage(tabs[0].id, { text: "send_head_inner" }, function (response) {
-        detectWordPress(response)
+      const tabId = tabs[0].id;
+      chrome.tabs.sendMessage(tabId, { tabId: tabId, text: "send_head_inner" }, function (response) {
+        detectWordPress( response?.response, response?.tabId )
       });
     }
   });
