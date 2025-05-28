@@ -21,7 +21,7 @@ const onTabUpdate = (activeInfo) => {
   // reset
   updateIcon(false, activeInfo.tabId)
 
-  // get current tab's <head> and detect WordPress
+  // get each window's active tab's <head> and detect WordPress
   chrome.tabs.query({ active: true, windowType: 'normal', url: ['about:newtab', '*://*/*'] }, function (tabs) {
     tabs.forEach( function( tab, index, arr ) {
       const tabId = tab.id;
