@@ -7,7 +7,7 @@ const clues = {
 
 // updates the icon in the toolbar
 const updateIcon = (state) => {
-  const path = state ? "icons/icon_on_32.png" : "icons/icon_off_32.png";
+  const path = state ? "icon_on_32.png" : "icon_off_32.png";
   chrome.browserAction.setIcon({ path })
 }
 
