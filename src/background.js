@@ -22,20 +22,16 @@ const onTabUpdate = (activeInfo) => {
   updateIcon(false, activeInfo.tabId)
 
   // get current tab's <head> and detect WordPress
-  chrome.tabs.query({ active: true, currentWindow: true, url: ['about:newtab', '*://*/*'] }, function (tabs) {
-    if ( tabs.length !== 0 ) {
-      const tabId = tabs[0].id;
+  chrome.tabs.query({ active: true, windowType: 'normal', url: ['about:newtab', '*://*/*'] }, function (tabs) {
+    tabs.forEach( function( tab, index, arr ) {
+      const tabId = tab.id;
       chrome.tabs.sendMessage(tabId, { tabId: tabId, text: "send_head_inner" }, function (response) {
         detectWordPress( response?.response, response?.tabId )
       });
-    }
+    });
   });
 }
 
 // listen for tab updates
-chrome.tabs.onActivated.addListener(onTabUpdate)
 chrome.tabs.onUpdated.addListener(onTabUpdate)
-chrome.tabs.onCreated.addListener(onTabUpdate)
 chrome.windows.onFocusChanged.addListener(onTabUpdate)
-chrome.tabs.onRemoved.addListener(onTabUpdate)
-chrome.tabs.onReplaced.addListener(onTabUpdate)
