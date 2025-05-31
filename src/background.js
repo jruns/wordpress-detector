@@ -35,5 +35,6 @@ const onTabUpdate = (activeInfo) => {
 }
 
 // listen for tab updates
+chrome.tabs.onActivated.addListener(onTabUpdate)
 chrome.tabs.onUpdated.addListener(onTabUpdate)
 chrome.windows.onFocusChanged.addListener(onTabUpdate)
