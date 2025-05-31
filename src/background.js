@@ -6,7 +6,9 @@ const clues = ["wp-content", "wp-includes", "xmlrpc.php"]
 // updates the icon in the toolbar
 const updateIcon = (state, tabId = null) => {
   const path = state ? "icon_on_32.png" : "icon_off_32.png";
+  const title = state ? "WordPress Detector (detected)" : "WordPress Detector (not detected)";
   chrome.browserAction.setIcon({ path, tabId })
+  chrome.browserAction.setTitle({ title, tabId })
 }
 
 // detect wordpress in a pages <head>
