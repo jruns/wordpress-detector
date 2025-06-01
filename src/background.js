@@ -24,7 +24,7 @@ const onTabUpdate = (activeInfo) => {
   updateIcon(false, activeInfo.tabId)
 
   // get each window's active tab's <head> and detect WordPress
-  chrome.tabs.query({ active: true, windowType: 'normal', url: ['about:newtab', '*://*/*'] }, function (tabs) {
+  chrome.tabs.query({ active: true, windowType: 'normal', url: ['*://*/*'] }, function (tabs) {
     tabs.forEach( function( tab, index, arr ) {
       const tabId = tab.id;
       chrome.tabs.sendMessage(tabId, { tabId: tabId, text: "send_head_inner" }, function (response) {
