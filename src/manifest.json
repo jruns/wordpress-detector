@@ -1,7 +1,7 @@
 {
   "name": "WordPress Detector",
   "author": "bensaine",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "WordPress Detector will detect instantly if the site in your current tab is made using WordPress!",
   "permissions": ["activeTab", "tabs"],
   "background": {
