@@ -6,7 +6,7 @@
   "minimum_chrome_version": "121",
   "browser_specific_settings": {
     "gecko": {
-      "id": "21a16015-26a5-4449-92ae-633e2b960be7",
+      "id": "{21a16015-26a5-4449-92ae-633e2b960be7}",
       "strict_min_version": "121.0"
     },
     "gecko_android": {
