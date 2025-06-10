@@ -3,6 +3,19 @@
   "author": "bensaine",
   "version": "1.1",
   "description": "WordPress Detector will detect instantly if the site in your current tab is made using WordPress!",
+  "minimum_chrome_version": "121",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "21a16015-26a5-4449-92ae-633e2b960be7",
+      "strict_min_version": "121.0"
+    },
+    "gecko_android": {
+      "strict_min_version": "121.0"
+    },
+    "safari": {
+      "strict_min_version": "15.4"
+    }
+  },
   "permissions": ["activeTab", "tabs"],
   "background": {
     "service_worker": "background.js",
